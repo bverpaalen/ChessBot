@@ -1,11 +1,11 @@
 class field:
-    occupied = false
+    occupied = False
     piece = None
 
     def setPiece(self,newPiece):
-        occupied = True
+        self.occupied = True
         self.piece = newPiece
 
     def removePiece(self):
-        occupied = False
+        self.occupied = False
         self.piece = None
