@@ -10,8 +10,23 @@ class Board:
 
     def __init__(self,size):
         self.size = size
+        self.createFields()
 
-    def createFields():
+    def print(self):
+        print()
+        print("WHITE")
+        for y in range(0,self.size):
+            for x in range(0,self.size):
+                if(self.fields[x][y].occupied == False):
+                    print("Empty",end=" ")
+                elif(self.fields[x][y].occupied == True):
+                    print(self.fields[x][y].piece.__class__.__name__,end=" ")
+                else:
+                    print("ERROR "+str(x)+str(y),end=" ")
+            print()
+        print("BLACK")
+
+    def createFields(self):
         for i in range(0,self.size):
             self.fields.append([])
             for j in range(0,self.size):
@@ -64,11 +79,11 @@ class Board:
             self.black.append(self.fields[size-x-1][size-1].piece)
 
     def movePiece(self,piece,x,y):
-        removePiece(piece)
-        setPiece(piece,x,y)
+        self.removePiece(piece)
+        self.setPiece(piece,x,y)
         
     def setPiece(self,piece,x,y):
-        if(self.fields.occupied):
+        if(self.fields[x][y].occupied):
             if(self.fields[x][y].piece.color == piece.color):
                 raise Exception("Taking same color")
             else:
@@ -78,10 +93,18 @@ class Board:
             self.fields[x][y] == piece
 
     def removePiece(self,piece):
-        self.fields[piece.x,piece,y] = None;   
+        self.fields[piece.x][piece.y].removePiece();   
+
+    def isCheck(self,side):
+        return False
     
-    def reset():
+    def reset(self):
         fields = []
         createFields()
         startPos()
 
+    def getPiecesSide(self,color):
+        if(color == Color.WHITE):
+            return self.white
+        elif color == Color.BLACK:
+            return self.black

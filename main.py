@@ -1,9 +1,17 @@
 #! ./python3/bin/python3
-from game import Game
+test = False
 
-def main():
-    a = None
-    b = None
-    players = [a,b]    
+from game import Game
+from player import Player
+from myenum.color import Color
+
+if(test):
+    from chessboard.pieceTEST import *
+    from chessboard.boardTEST import *
+
+def main():    
+    a = Player("a",Color.WHITE)
+    b = Player("b",Color.BLACK)
+    players = [a,b]
     game = Game(players)
 main()

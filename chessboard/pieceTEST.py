@@ -1,4 +1,4 @@
-from piece import *
+from chessboard.pieces import *
 
 def reset(resetPiece):
     resetPiece.domove(0,0)
